@@ -6,8 +6,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      push: write
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 1.8
