@@ -28,4 +28,3 @@ jobs:
         badges-directory: badges
         generate-branches-badge: true
         generate-summary: true
-	jacoco-csv-file: back/target/site/jacoco/jacoco.csv
