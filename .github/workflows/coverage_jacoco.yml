@@ -28,3 +28,4 @@ jobs:
         badges-directory: badges
         generate-branches-badge: true
         generate-summary: true
+        jacoco-csv-file: toto/toto.csv
