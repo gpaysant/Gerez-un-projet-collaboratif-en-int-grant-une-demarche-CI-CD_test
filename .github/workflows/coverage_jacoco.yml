@@ -3,6 +3,9 @@ name: Mesure coverage
 on:
   [push]
 
+env: 
+  INPUT_JACOCO-CSV-FILE: back/target/site/jacoco/
+
 jobs:
   build:
 
@@ -22,8 +25,4 @@ jobs:
       uses: cicirello/jacoco-badge-generator@v2
       with:
         generate-branches-badge: true
-    - name: Upload JaCoCo coverage report
-      uses: actions/upload-artifact@v2
-      with:
-        name: jacoco-report
-        path: back/target/site/jacoco/
+	jacoco-csv-file: "back/target/site/jacoco/jacoco.csv"
