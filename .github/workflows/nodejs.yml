@@ -31,7 +31,7 @@ jobs:
       shell: bash
 
     - name: Install specific npm version
-      run: npm install -g npm@14.21.3
+      run: npm install -g npm@latest
 
     - name: Display node version
       run: node --version
