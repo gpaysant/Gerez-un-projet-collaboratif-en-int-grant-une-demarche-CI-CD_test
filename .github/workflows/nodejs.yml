@@ -25,6 +25,8 @@ jobs:
         if [ ! -f package-lock.json ]; then
           echo "Error: package-lock.json not found in  directory"
           exit 1
+        else
+          echo "package-lock.json found in ./front directory"
         fi
       shell: bash
 
