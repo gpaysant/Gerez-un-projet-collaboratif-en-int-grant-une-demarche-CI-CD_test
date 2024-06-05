@@ -10,9 +10,6 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./../../front
 
     strategy:
       matrix:
@@ -27,5 +24,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
+      working-directory: front
     - run: npm run test
+      working-directory: front
     - run: npm run lint
+      working-directory: front
