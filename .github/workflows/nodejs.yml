@@ -30,6 +30,9 @@ jobs:
         fi
       shell: bash
 
+    - name: Install specific npm version
+      run: npm install -g npm@14
+
     - name: Display node version
       run: node --version
 
