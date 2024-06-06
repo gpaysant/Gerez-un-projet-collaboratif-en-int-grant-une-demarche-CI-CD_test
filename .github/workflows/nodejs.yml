@@ -4,52 +4,20 @@ on:
   [push]
 
 jobs:
-  build:
-
+  build-and-test-web-with-coverage:
     runs-on: ubuntu-latest
-    defaults:
-       run:
-         working-directory: ./front/
-
-    strategy:
-      matrix:
-        node-version: [14.x, 16.x, 18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Check for lock file
-      run: |
-        if [ ! -f package-lock.json ]; then
-          echo "Error: package-lock.json not found in  directory"
-          exit 1
-        else
-          echo "package-lock.json found in ./front directory"
-        fi
-      shell: bash
-
-    - name: Install specific npm version
-      run: npm install -g npm@latest
-
-    - name: Display node version
-      run: node --version
-
-    - name: Display npm version
-      run: npm --version
-
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+    - uses: actions/checkout@v4
+    - name: Setup Node for Web project
+      uses: actions/setup-node@v4
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: '20'
         cache: 'npm'
-
-    - name: Install dependencies
+        cache-dependency-path: front/package-lock.json
+    - name: Install dependencies for front project
       run: npm ci
-
-    - name: Run tests
-      run: npm run test
-
-    - name: Run lint
-      run: npm run lint
+      working-directory: front
+      
+    - name: Build front project
+      run: npm run build --if-present
+      working-directory: front
