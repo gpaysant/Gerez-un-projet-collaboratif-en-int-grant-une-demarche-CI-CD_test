@@ -27,7 +27,7 @@ jobs:
         git config user.email "<>"
         git pull
         git checkout report
-        git add back/target/site/jacoco/jacoco.csv
+        git add -A
         git commit -m "new report"
         git push
     - name: Generate JaCoCo badge
