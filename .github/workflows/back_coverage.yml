@@ -12,9 +12,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Get current date
-        id: date
-        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
     - uses: actions/checkout@v4
     - name: Set up JDK 17
       uses: actions/setup-java@v3
@@ -30,7 +27,7 @@ jobs:
         git config user.email "<>"
         git checkout report
         git add back/target/site/jacoco/jacoco.csv
-        git commit -m "new report ${{ steps.date.outputs.date }}"
+        git commit -m "new report"
         git push
     - name: Generate JaCoCo badge
       id: jacoco
