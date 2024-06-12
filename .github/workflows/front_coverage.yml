@@ -33,5 +33,5 @@ jobs:
         git pull
         git checkout report
         git add -A -f front/coverage/bobapp
-        git commit -m "[Front] Report"
+        git commit -m "[Front] Report ${{ github.event.repository.updated_at}}"
         git push
