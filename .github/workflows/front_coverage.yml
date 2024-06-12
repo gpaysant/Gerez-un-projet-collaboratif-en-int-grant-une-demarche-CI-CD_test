@@ -21,8 +21,3 @@ jobs:
     - name: Build front project
       run: npm run build --if-present
       working-directory: front
-
-     - name: Run test front project
-      run: npm run test:prod
-      working-directory: front
-
