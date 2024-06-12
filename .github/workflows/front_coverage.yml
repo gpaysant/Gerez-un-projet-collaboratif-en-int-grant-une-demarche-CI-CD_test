@@ -33,7 +33,7 @@ jobs:
         git config user.email "<>"
         git pull
         git checkout report
-        git add front/coverage/bobapp/*
+        git add -f front/coverage/bobapp/*
         git commit -m "[Front] Report ${{ github.event.repository.updated_at}}"
 
     - name: Push
