@@ -26,3 +26,12 @@ jobs:
       run: npm run test:prod
       working-directory: front
       
+    - name: Report into branch "report"
+      run: |
+        git config user.name "GitHub Actions Bot"
+        git config user.email "<>"
+        git pull
+        git checkout report
+        git add -A -f front/coverage/bobapp
+        git commit -m "[Front] Report"
+        git push
