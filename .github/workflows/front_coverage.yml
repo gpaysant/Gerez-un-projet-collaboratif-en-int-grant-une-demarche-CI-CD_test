@@ -26,13 +26,8 @@ jobs:
       run: npm run test:prod
       working-directory: front
       
-    - name: Check if there are any changes
-      id: verify_diff
-      run: |
-          git diff --quiet . || echo "changed=true" >> $GITHUB_OUTPUT
 
     - name: Report into branch "report"
-      if: steps.verify_diff.outputs.changed == 'true'
       run: |
         git config user.name "GitHub Actions Bot"
         git config user.email "<>"
@@ -42,5 +37,4 @@ jobs:
         git commit -m "[Front] Report ${{ github.event.repository.updated_at}}"
 
     - name: Push
-      if: steps.verify_diff.outputs.changed == 'true'
       uses: ad-m/github-push-action@master
