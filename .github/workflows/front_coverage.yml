@@ -1,14 +1,15 @@
 name: Web CI/CD Workflowon:
   push:
     branches:
-      - developpe
+      - test_branch
     paths:
       - 'front/**'
   pull_request:
     branches:
       - main
     paths:
-      - 'front/**'jobs:
+      - 'front/**'
+jobs:
   build-and-test-web-with-coverage:
     runs-on: ubuntu-latest
     steps:
@@ -27,17 +28,18 @@ name: Web CI/CD Workflowon:
       working-directory: front    
     - name: Run test with coverage
       working-directory: front
-      run: npm run test -- --code-coverage --browsers=ChromeHeadless --watch=false    - name: Commit Coverage Report
+      run: npm run test -- --code-coverage --browsers=ChromeHeadless --watch=false    
+    - name: Commit Coverage Report
       run: |
-        git config --global user.email "mvouyorick@gmail.com"
+        git config --global user.email "gerald.paysant.sopra@gmail.com"
         git config --global user.name "GitHub Actions"
         git fetch --all
         git checkout report
         git pull origin report
         mkdir -p report/front
-        cp -r front/coverage/bobapp/* ./coverage-repport/front
-        git add ./coverage-repport/front
+        cp -r front/coverage/bobapp/* ./report/front
+        git add ./report/front
         git commit -m "Update Coverage Reports"
-        git push origin coverage-reports
+        git push origin report
     env:
      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
