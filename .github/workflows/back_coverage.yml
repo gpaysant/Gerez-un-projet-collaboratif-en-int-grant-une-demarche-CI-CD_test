@@ -48,19 +48,19 @@ jobs:
         steps:
           - uses: actions/checkout@v4
           - name: Cache SonarCloud packages
-          uses: actions/cache@v3
-          with:
-            path: ~/.sonar/cache
-            key: ${{ runner.os }}-sonar
-            restore-keys: ${{ runner.os }}-sonar
+            uses: actions/cache@v3
+            with:
+              path: ~/.sonar/cache
+              key: ${{ runner.os }}-sonar
+              restore-keys: ${{ runner.os }}-sonar
           - name: Cache Maven packages
-          uses: actions/cache@v3
-          with:
-            path: ~/.m2
-            key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-            restore-keys: ${{ runner.os }}-m2
+            uses: actions/cache@v3
+            with:
+              path: ~/.m2
+              key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+              restore-keys: ${{ runner.os }}-m2
           - name: Build and analyze
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=gpaysant_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+              SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+            run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=gpaysant_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD
