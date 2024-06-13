@@ -8,7 +8,6 @@ env:
 
 jobs:
   coverage_job:
-      build:
 
         runs-on: ubuntu-latest
 
