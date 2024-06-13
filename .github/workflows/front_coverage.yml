@@ -1,9 +1,14 @@
-name: Front coverage
-
-on:
-  [push]
-
-jobs:
+name: Web CI/CD Workflowon:
+  push:
+    branches:
+      - developpe
+    paths:
+      - 'front/**'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'front/**'jobs:
   build-and-test-web-with-coverage:
     runs-on: ubuntu-latest
     steps:
@@ -16,26 +21,23 @@ jobs:
         cache-dependency-path: front/package-lock.json
     - name: Install dependencies for front project
       run: npm ci
-      working-directory: front
-      
+      working-directory: front    
     - name: Build front project
       run: npm run build --if-present
+      working-directory: front    
+    - name: Run test with coverage
       working-directory: front
-      
-    - name: Run test for front project
-      run: npm run test:prod
-      working-directory: front
-      
-
-    - name: Report into branch "report"
+      run: npm run test -- --code-coverage --browsers=ChromeHeadless --watch=false    - name: Commit Coverage Report
       run: |
-        git config user.name "GitHub Actions Bot"
-        git config user.email "<>"
+        git config --global user.email "mvouyorick@gmail.com"
+        git config --global user.name "GitHub Actions"
         git fetch --all
         git checkout report
         git pull origin report
         mkdir -p report/front
-        cp -r front/coverage/bobapp/* ./report/front/
-        git add ./report/front/
-        git commit -m "[Front] Report ${{ github.event.repository.updated_at}}"
-        git push origin report
+        cp -r front/coverage/bobapp/* ./coverage-repport/front
+        git add ./coverage-repport/front
+        git commit -m "Update Coverage Reports"
+        git push origin coverage-reports
+    env:
+     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
