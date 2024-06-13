@@ -1,4 +1,5 @@
-name: Web CI/CD Workflowon:
+name: Web CI/CD Workflow
+on:
   push:
     branches:
       - test_branch
