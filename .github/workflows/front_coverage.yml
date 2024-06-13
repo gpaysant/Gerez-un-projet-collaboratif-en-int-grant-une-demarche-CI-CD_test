@@ -33,8 +33,8 @@ jobs:
         git config user.email "<>"
         git pull
         git checkout report
-        git add ./front/coverage/bobapp/
+        mkdir -p report/front
+        cp -r front/coverage/bobapp/* ./report/front/
+        git add ./report/front/
         git commit -m "[Front] Report ${{ github.event.repository.updated_at}}"
-
-    - name: Push
-      uses: ad-m/github-push-action@master
+        git push origin report
