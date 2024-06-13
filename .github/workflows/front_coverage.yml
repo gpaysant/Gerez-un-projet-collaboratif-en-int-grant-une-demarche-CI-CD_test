@@ -29,7 +29,6 @@ jobs:
 
     - name: Report into branch "report"
       run: |
-        //git config --global
         git config user.name "GitHub Actions Bot"
         git config user.email "<>"
         git pull
