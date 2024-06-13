@@ -8,8 +8,6 @@ env:
 
 jobs:
   coverage_job:
-      build:
-
         runs-on: ubuntu-latest
 
         steps:
@@ -41,7 +39,6 @@ jobs:
             jacoco-csv-file: back/target/site/jacoco/jacoco.csv
             
   sonar_job:
-     build:
         runs-on: ubuntu-latest
         needs: coverage_job
         
