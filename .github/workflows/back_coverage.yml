@@ -45,8 +45,7 @@ jobs:
         needs: coverage_job
         
         steps:
-          - name: Checkout code
-          uses: actions/checkout@v4
+          - uses: actions/checkout@v4
           - name: Cache SonarCloud packages
           uses: actions/cache@v3
           with:
