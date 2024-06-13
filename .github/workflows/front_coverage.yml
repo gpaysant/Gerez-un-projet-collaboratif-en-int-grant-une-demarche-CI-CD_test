@@ -29,11 +29,12 @@ jobs:
 
     - name: Report into branch "report"
       run: |
+        //git config --global
         git config user.name "GitHub Actions Bot"
         git config user.email "<>"
         git pull
         git checkout report
-        git add -f front/coverage/bobapp/*
+        git add ./front/coverage/bobapp/
         git commit -m "[Front] Report ${{ github.event.repository.updated_at}}"
 
     - name: Push
