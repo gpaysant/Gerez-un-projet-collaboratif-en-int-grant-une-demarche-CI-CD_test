@@ -48,7 +48,7 @@ jobs:
     #    git commit -m "[Front] Report ${{ #github.event.repository.updated_at}}"
    #     git push origin report
    # env:
-     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+   #  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   sonar_job:
     runs-on: ubuntu-latest
