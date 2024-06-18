@@ -16,7 +16,7 @@
 	<properties>
 		<java.version>11</java.version>
 		<!--<sonar.organization>sboo</sonar.organization>-->
-		<sonar.host.url>https://localhost:9000</sonar.host.url>
+		<sonar.host.url>https://172.30.48.1:9000</sonar.host.url>
 	</properties>
 	<dependencies>
 		<dependency>
