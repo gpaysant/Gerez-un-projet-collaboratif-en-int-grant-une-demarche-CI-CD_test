@@ -16,6 +16,7 @@
 	<properties>
 		<java.version>11</java.version>
 		<!--<sonar.organization>sboo</sonar.organization> -->
+		<sonar.projectKey>app_ci_cd</sonar.projectKey>
 		<sonar.host.url>http://localhost:9000</sonar.host.url>
 	</properties>
 	<dependencies>
