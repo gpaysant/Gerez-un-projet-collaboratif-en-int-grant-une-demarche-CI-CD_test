@@ -71,7 +71,7 @@ jobs:
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
       run: >
         sonar-scanner
-        -Dsonar.projectKey=app_ci_cd
+        -Dsonar.projectKey=app_front
         -Dsonar.sources=./front/src
         -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}
         -Dsonar.login=${{ secrets.SONAR_TOKEN }}
